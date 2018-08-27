@@ -20,7 +20,8 @@
               <div class="cart-tab-1">
                 <div class="cart-item-check">
                   <a href="javascipt:;" class="checkbox-btn item-check-btn" @click="isSelect(item)"
-                     :class="{'active':item.isselect}"></a>
+                     :class="{'active':item.isselect}">
+                  </a>
                 </div>
                 <div class="cart-item-pic">
                   <img :src="'/static/'+item.prodcutImg">
@@ -186,6 +187,7 @@
   }
 
   .active, .allActive {
-    background: #eb767d;
+    background: url("../../static/select.png");
+    background-size: cover;
   }
 </style>

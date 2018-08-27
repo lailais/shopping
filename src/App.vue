@@ -142,22 +142,11 @@
     width: 100%;
     z-index: 100;
   }
-  .routerWrapper{
-    position: relative;
+
+  .routerWrapper {
+    position: absolute;
+    top: 50px;
+    width: 100%;
     z-index: 10;
   }
-
-  /*.routerWrapper{*/
-  /*position: fixed;*/
-  /*left: 0;*/
-  /*top:145px;*/
-  /*width: 100%;*/
-  /*}*/
-  /*.footWrapper{*/
-  /*position: fixed;*/
-  /*!*margin-top: 150px;*!*/
-  /*left: 0;*/
-  /*bottom: 0px;*/
-  /*width: 100%;*/
-  /*}*/
 </style>

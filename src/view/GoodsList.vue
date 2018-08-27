@@ -2,10 +2,10 @@
   <div class="accessory-result-page accessory-page">
     <div class="container">
       <div class="filter-nav">
-        <span class="sortby">Sort by:</span>
-        <a href="javascript:void(0)" class="default cur">Default</a>
-        <a href="javascript:void(0)" class="price">Price</a>
-        <a href="javascript:void(0)" class="filterby stopPop">Filter by</a>
+        <!--<span class="sortby">Sort by:</span>-->
+        <!--<a href="javascript:void(0)" class="default cur">Default</a>-->
+        <!--<a href="javascript:void(0)" class="price">Price</a>-->
+        <!--<a href="javascript:void(0)" class="filterby stopPop">Filter by</a>-->
       </div>
       <div class="accessory-result">
         <!-- filter -->
@@ -90,8 +90,6 @@
           let num = 0
           for (var i = 0; i < o.selectList.length; i++) {
             if (item.productId === o.selectList[i].productId) { // 更新被选中过的商品的数量
-//              console.log('aa')
-//              console.log(o.selectList[i])
               o.selectList[i].count++
               o.$emit('selectList', o.selectList[i])
               return ++num
@@ -103,8 +101,7 @@
           this.$set(item, 'count', 1)
           this.$emit('selectList', item)
         }
-        let el = event.target
-//        console.log(el)
+        let el = event.target // 获取点击事件的事件源
         this.$emit('dropShop', {good: item, el})
       }
     }
@@ -117,16 +114,8 @@
     border-radius: 5px;
   }
 
-  #filter {
-    /*position: fixed;*/
-    /*left: 0;*/
-    /*top: 0;*/
-    /*width: 230px;*/
+  .filter-price {
+    position: fixed;
+    top: 145px;
   }
-
-  /*.filter-price{*/
-  /*position: fixed;*/
-  /*!*left: 0;*!*/
-  /*top:145px;*/
-  /*}*/
 </style>
