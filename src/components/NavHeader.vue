@@ -174,13 +174,6 @@
             address: sessionStorage.address
           }
         }).then(function (res) {
-//          sessionStorage.address = res.data.address
-//          sessionStorage.selected = res.data.selectShop
-//          if (sessionStorage.selected !== 'undefined') { // 注意从数据库返回的undefined是string
-//            o.selectList = JSON.parse(sessionStorage.selected)
-//          } else {
-//            o.selectList = []
-//          }
         }).catch(e => {
           // 打印一下错误
           console.log(e)

@@ -6,7 +6,6 @@
           <div class="page-title-normal">
             <h2 class="page-title-h2"><span>check out</span></h2>
           </div>
-          <!-- process step -->
           <div class="check-step">
             <ul>
               <li class="cur"><span>Confirm</span> address</li>
@@ -87,7 +86,9 @@
       }
     },
     created() {
-      this.myAddArr = JSON.parse(sessionStorage.address)
+      if (sessionStorage.address !== 'undefined') { // 注意缓存里面的数据类型都是字符串包括undefined
+        this.myAddArr = JSON.parse(sessionStorage.address)
+      }
     },
     mounted() {
       this.$emit('pageNow', 'Address')
@@ -124,9 +125,10 @@
   }
 </script>
 <style scoped>
-  .checkout-page{
+  .checkout-page {
     margin-top: 50px;
   }
+
   .icon-add {
     font-size: 50px;
   }
