@@ -90,6 +90,24 @@
       "productName":"摄像头",
       "prodcutPrice":"1119",
       "prodcutImg":"photo.jpg"
+    },
+    {
+      "productId":"10016",
+      "productName":"耳机555",
+      "prodcutPrice":"1529",
+      "prodcutImg":"7.jpg"
+    },
+    {
+      "productId":"10017",
+      "productName":"充电宝",
+      "prodcutPrice":"99",
+      "prodcutImg":"8.jpg"
+    },
+    {
+      "productId":"10018",
+      "productName":"加湿器",
+      "prodcutPrice":"119",
+      "prodcutImg":"9.jpg"
     }
   ]
 }

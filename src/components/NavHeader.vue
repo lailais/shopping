@@ -131,7 +131,7 @@
             o.$refs.loginBtn.value = '登陆成功...'
             sessionStorage.name = res.data.user.userName
             if (sessionStorage.selected && res.data.user.selectShop !== 'undefined') {
-              console.log('aaa')
+//              console.log('aaa')
               let a = JSON.parse(res.data.user.selectShop)
               let b = JSON.parse(sessionStorage.selected)
               let c = a.concat(b)
@@ -143,7 +143,7 @@
                   }
                 }
               }
-              console.log(c)
+//              console.log(c)
               sessionStorage.selected = JSON.stringify(c)
             }
             location.reload()
@@ -167,9 +167,28 @@
         }
       },
       logout() {
-        sessionStorage.name = ''
-        sessionStorage.selected = ''
+        this.axios.get('/api/cart/', {
+          params: {
+            name: sessionStorage.name,
+            newSelect: sessionStorage.selected,
+            address: sessionStorage.address
+          }
+        }).then(function (res) {
+//          sessionStorage.address = res.data.address
+//          sessionStorage.selected = res.data.selectShop
+//          if (sessionStorage.selected !== 'undefined') { // 注意从数据库返回的undefined是string
+//            o.selectList = JSON.parse(sessionStorage.selected)
+//          } else {
+//            o.selectList = []
+//          }
+        }).catch(e => {
+          // 打印一下错误
+          console.log(e)
+        })
         location.reload()
+        sessionStorage.selected = ''
+        sessionStorage.address = ''
+        sessionStorage.name = ''
       },
       drop(good, el) {
         this.ball.show = true
@@ -203,14 +222,6 @@
       afterEnter(el) { // 小球进入完毕
         this.ball.show = false
         el.style.display = 'none'
-//        this.$refs.iconcart.style.width='40px'
-//        this.$refs.iconcart.style.fontSize='40px'
-//        console.log('bb')
-//        this.$refs.iconcart.addEventListener('transitionend',()=>{
-//          this.$refs.iconcart.style.width='28px'
-//          this.$refs.iconcart.style.fontSize='28px'
-//          console.log('aa')
-//        })
       }
     }
   }
@@ -311,7 +322,7 @@
     height: 50px;
     left: 0;
     top: 0px;
-    transition: all 0.5s linear;
+    transition: all 0.5s cubic-bezier(0.49, -0.29, 0.75, 0.41);
   }
 
   .ball {

@@ -80,7 +80,7 @@ exports.doRegister = (res, userInfo) => {
   })
 }
 exports.refreshDB = (res, userInfo) => {
-  // console.log(userInfo)
+  console.log(userInfo)
   MongoClient.connect(DB_CONN_STR, {useNewUrlParser: true}, (err, client) => {
     if (err) {
       console.log(err)

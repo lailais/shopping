@@ -66,7 +66,6 @@
             <div class="item-all-check">
               <a href="javascipt:;">
                 <span class="checkbox-btn item-check-btn" :class="{'allActive':isAll}" @click="changeIsAll">
-                <!--<svg class="icon icon-ok"><use xlink:href="#icon-ok"/></svg>-->
                 </span>
                 <span>Select all</span>
               </a>
@@ -118,8 +117,16 @@
       isSelect(item) {
         if (!item.isselect) {
           this.$set(item, 'isselect', true)
+          this.isAll = true
+          for (var i = 0; i < this.selectList.length; i++) {
+            if (!this.selectList[i].isselect) {
+              this.isAll = false
+              return
+            }
+          }
         } else {
           item.isselect = false
+          this.isAll = item.isselect
         }
       },
       doAdd(item) {

@@ -147,6 +147,19 @@
     position: absolute;
     top: 50px;
     width: 100%;
+    margin-bottom: 50px;
     z-index: 10;
+  }
+
+  .footWrapper {
+    position: fixed;
+    width: 100%;
+    /*line-height: 50px;*/
+    height: 50px;
+    bottom: 0px;
+    z-index: 15;
+  }
+  .footWrapper>.footer{
+    margin-top: 0;
   }
 </style>

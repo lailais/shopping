@@ -124,6 +124,9 @@
   }
 </script>
 <style scoped>
+  .checkout-page{
+    margin-top: 50px;
+  }
   .icon-add {
     font-size: 50px;
   }
@@ -139,7 +142,7 @@
 
   .form {
     position: relative;
-    margin: 50px auto;
+    margin: 150px auto;
     width: 400px;
     height: 300px;
     background: rgba(0, 0, 0, .6);

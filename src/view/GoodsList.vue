@@ -1,12 +1,6 @@
 <template>
   <div class="accessory-result-page accessory-page">
     <div class="container">
-      <div class="filter-nav">
-        <!--<span class="sortby">Sort by:</span>-->
-        <!--<a href="javascript:void(0)" class="default cur">Default</a>-->
-        <!--<a href="javascript:void(0)" class="price">Price</a>-->
-        <!--<a href="javascript:void(0)" class="filterby stopPop">Filter by</a>-->
-      </div>
       <div class="accessory-result">
         <!-- filter -->
         <div class="filter stopPop" id="filter">
@@ -23,9 +17,9 @@
         <div class="accessory-list-wrap">
           <div class="accessory-list col-4">
             <ul>
-              <li v-for="item in goods" :key="item.productId" v-show="isShow(item.prodcutPrice)">
+              <li v-for="item in myGoods" :key="item.productId" v-show="isShow(item.prodcutPrice)">
                 <div class="pic">
-                  <a href="#"><img :src="'static/'+item.prodcutImg" alt=""></a>
+                  <a href="#"><img :src="'static/'+item.prodcutImg"></a>
                 </div>
                 <div class="main">
                   <div class="name">{{item.productName}}</div>
@@ -37,6 +31,10 @@
               </li>
             </ul>
           </div>
+          <ul class="tab" v-show="range===0">
+            <li v-for="item in page" :key="item" @click="showNow(item)" :class="{'active':pageIndex===item}">{{item}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -50,7 +48,9 @@
     data() {
       return {
         range: 0,
-        rangeClass: ['All', '0 - 100', '100 - 500', '500 - 1000', '1000 - 2000', 'more than 2000']
+        rangeClass: ['All', '0 - 100', '100 - 500', '500 - 1000', '1000 - 2000', 'more than 2000'],
+//        myGoods: [],
+        pageIndex: 1
       }
     },
     mounted() {
@@ -103,6 +103,33 @@
         }
         let el = event.target // 获取点击事件的事件源
         this.$emit('dropShop', {good: item, el})
+      },
+      showNow(index) {
+        this.pageIndex = index
+      }
+    },
+    computed: {
+      page() {
+        let page = 0
+        this.goods.forEach((i) => {
+          if (this.isShow(i.prodcutPrice)) {
+            page++
+          }
+        })
+        page = Math.ceil(page / 5)
+        return page
+      },
+      myGoods() {
+        if (this.goods.length) {
+          let arr = []
+          if (this.range === 0) {
+            arr = this.goods.slice(5 * (this.pageIndex - 1), 5 * this.pageIndex)
+            return arr
+          } else {
+            arr = this.goods
+            return arr
+          }
+        }
       }
     }
   }
@@ -117,5 +144,32 @@
   .filter-price {
     position: fixed;
     top: 145px;
+  }
+
+  .accessory-result-page {
+    width: 100%;
+  }
+
+  .accessory-list-wrap{
+    margin-top: 100px;
+  }
+  .tab {
+    list-style: none;
+    font-size: 0;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .tab > li {
+    display: inline-block;
+    margin: 0 10px;
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid orangered;
+    font-size: 20px;
+    border-radius: 20px;
+    cursor: pointer;
   }
 </style>
